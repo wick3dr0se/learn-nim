@@ -3,11 +3,14 @@ Let's learn Nim
 
 ### Resources
 beginner guides:  
-[Nim programming book](https://github.com/StefanSalewski/NimProgrammingBook/blob/master/nimprogramming.adoc)
+[Nim manual](https://nim-lang.org/docs/manual.html)  
+[Nim programming book](https://github.com/StefanSalewski/NimProgrammingBook/blob/master/nimprogramming.adoc)  
+[Nim basics](https://narimiran.github.io/nim-basics/)
 
 intermediate guides:  
 [Nim tutorial](https://nim-lang.org/docs/tut1.html)  
-https://nim-by-example.github.io/
+[Nim by example](https://nim-by-example.github.io)  
+[Learn Nim in 5 minutes](https://learnxinyminutes.com/docs/nim/)
 
 sandbox:  
 https://play.nim-lang.org/
@@ -15,7 +18,7 @@ https://play.nim-lang.org/
 ### Comments
 ```nim
 # comment
-
+## documentation comment
 #[ multi-line 
    comment ]#
 ```
@@ -24,7 +27,7 @@ https://play.nim-lang.org/
 
 ### Operators
 ```nim
-+ # addition += # increment
++ # addition += # increment = assignment
 - # subtraction
 * # multiplication
 / # division
@@ -97,7 +100,7 @@ const
 
 ### Let
 ```nim
-# let can be used to reinitialize a variable to a constant value or to store command output
+# (re)initializes a variable to a constant
 let n = 2
 ```
 
@@ -120,7 +123,72 @@ type
 
 ---
 
-### Common procedures
+### If statement
+```nim
+if statement:
+  expression
+elif statement:
+  expression
+else:
+  expression
+```
+
+---
+
+### When statement
+same as if, except conditions must be constants and statement remains in the same scope. also, code only get generated for the true condition by the compiler
+```nim
+when statement:
+  expression
+elif sameStatement:
+  expression
+else:
+  expression
+```
+
+### Case statement
+```nim
+case "Pi":
+  of "blueberey":
+    "fail"
+  of "3.14":
+    "pass"
+  else:
+    "impossible"
+```
+
+---
+
+### For loop
+```nim
+for i in 1 .. 10:
+  expression
+```
+
+---
+
+### While loop
+```nim
+while age == "":
+  expression
+```
+
+---
+
+### Procedures
+```nim
+proc onOff(reply: string): bool =
+  echo reply, " [0/1]"
+  if reply == 0:
+    return true
+  else:
+    return false
+    
+onOff(0) # true
+```
+
+#### Common procedures
+
 ```nim
 echo() # output to stream w/ newline
 write() # output to stream
@@ -136,47 +204,6 @@ readLine() # read a line
 
 ---
 
-### Read input
+### Store input
 ```nim
 var line = readLine(stdin)
-```
-
----
-
-### Test
-```nim
-n == i # equality
-```
-
----
-
-### If-else
-```nim
-if n == i:
-  expression
-elif n == Pi:
-  expression
-else:
-  expression
-```
-
----
-
-### Case
-```nim
-case "Pi":
-  of "blueberey":
-    "fail"
-  of "3.14":
-    "pass"
-  else:
-    "impossible"
-```
-
----
-
-### Loops
-```nim
-for i in 1 .. 10:
-  expression
-```
