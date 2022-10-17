@@ -15,7 +15,8 @@ intermediate guides:
 sandbox:  
 https://play.nim-lang.org/
 
-### Comments
+<h2 align="center">Comments</h2>
+
 ```nim
 # comment
 ## documentation comment
@@ -23,43 +24,59 @@ https://play.nim-lang.org/
    comment ]#
 ```
 
----
+<h2 align="center">Operators</h2>
 
-### Operators
+### Arithmetic Operators
+calculate numerical values
 ```nim
-+ # addition += # increment = assignment
-- # subtraction
-* # multiplication
-/ # division
++ # add
+- # subtract
+* # multiply
+/ # divide
 ^ # power
 ```
 
----
-
-### Test operators
+### Assignment Operators
+define a value
 ```nim
-== # is equal to
+= # assign
++= # add, assign
 ```
----
+
+### Logical Operators
+test if conditions are true or not
+```nim
+# following operators return true, if:
+and # both conditions are true
+or # condition(s) is true
+xor # a condition is true and other is not
+not # condition is false (accepts a single condition)
+```
+
+### Relational operators
+test the relation between two comparable conditions
+```nim
+== # is equal   != # not equal
+> # greater than   >= greater or equal
+< # lesser than   <= less or equal
+```
+
+<h2 align="center">Data Types</h2>
 
 ### Data types
+declares how values are interpreted
 ```nim
 bool # true/false
 int # integer
 float # floating-point number
-string # character array
+char # a single character (single quotes)
+string # character array (double quotes)
 ```
 
----
+<h2 align="center">Variables</h2>
 
-### Subrange types
-```nim
-age = 20 .. 30 # implicit range[] keyword
-```
-
----
-
-### Variables
+### var
+define (& declare) a data type of mutable value
 ```nim
 # declare variable
 var n: int
@@ -83,9 +100,8 @@ var
   name: char
 ```
 
----
-
-### Constants
+### const
+define a constant of immutable value
 ```nim
 # define constant
 const Pi = 3.14
@@ -93,60 +109,57 @@ const Pi = 3.14
 # define constant block
 const
   Pi = 3.14
-  Four = 2 + 2
+  four = 4
+  apple = red
 ```
 
----
-
-### Let
+### let
+declares & defines a(n existing) variable to an immutable value
 ```nim
-# (re)initializes a variable to a constant
 let n = 2
 ```
 
----
+<h2 align="center">Types</h2>
 
-### Enums
+### array
+a collection of strings
+```nim
+type
+  TwoArgs = array[2, strings]
+```
+
+### enum
+a group of constants
 ```nim
 type
   Signals = enum
     sigQuit = 3, sigAbort = 6, sigKill = 9
 ```
 
----
+<h2 align="center">Statements</h2>
 
-### Arrays
+### if
+branch control flow, good for 3/4 expressions
 ```nim
-type
-  TwoArgs = array[2, strings]
-```
-
----
-
-### If statement
-```nim
-if statement:
-  expression
-elif statement:
-  expression
+if Pi == 3.14:
+  echo "Let's have Pi"
+elif apple == red:
+  echo "Apples are red"
 else:
-  expression
+  echo "Neither apples are read nor Pi equal 3.14"
 ```
 
----
-
-### When statement
-same as if, except conditions must be constants and statement remains in the same scope. also, code only get generated for the true condition by the compiler
+### when
+same as if, except with constants and statement remains in the same scope
 ```nim
-when statement:
-  expression
-elif sameStatement:
-  expression
-else:
-  expression
+when apple == red:
+  return true
+elif apple == orange:
+  return false
 ```
 
-### Case statement
+### case
+multi-branch control flow, good for more than 3 expressions
 ```nim
 case "Pi":
   of "blueberey":
@@ -157,53 +170,34 @@ case "Pi":
     "impossible"
 ```
 
----
+_control flow statements will be executed only if some condition is satisfied_
 
-### For loop
+<h2 align="center">Loops</h2>
+
+### for
+iterate until condition is met
 ```nim
 for i in 1 .. 10:
-  expression
+  echo i
 ```
 
----
-
-### While loop
+### while
+execute until condition is false
 ```nim
-while age == "":
-  expression
+while true:
+  echo "This will never stop"
 ```
 
----
+<h2 align="center">Procedures</h2>
 
-### Procedures
+### proc
 ```nim
-proc onOff(reply: string): bool =
-  echo reply, " [0/1]"
-  if reply == 0:
+proc onOff(reply: char): bool =
+  echo reply, " [y/n]"
+  if reply == y:
     return true
   else:
     return false
     
-onOff(0) # true
+onOff(y) # true
 ```
-
-#### Common procedures
-
-```nim
-echo() # output to stream w/ newline
-write() # output to stream
-inc() # increment by 1 or specification
-```
-
----
-
-### Common functions
-```nim
-readLine() # read a line
-```
-
----
-
-### Store input
-```nim
-var line = readLine(stdin)
